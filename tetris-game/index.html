@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falling Blocks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="left-panel">
+      <div class="panel-box hold-panel">
+        <h2>HOLD (C)</h2>
+        <canvas id="hold-canvas" width="80" height="80"></canvas>
+      </div>
+      <div class="stats-panel">
+        <div class="stat-box">
+          <p>SCORE</p>
+          <h3 id="score">0</h3>
+        </div>
+        <div class="stat-box">
+          <p>LEVEL</p>
+          <h3 id="level">1</h3>
+        </div>
+        <div class="stat-box">
+          <p>LINES</p>
+          <h3 id="lines">0</h3>
+        </div>
+        <div class="stat-box">
+          <p>COMBO</p>
+          <h3 id="combo">0</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="board-container">
+      <canvas id="game-canvas" width="300" height="600"></canvas>
+
+      <!-- Overlays -->
+      <div id="start-screen" class="overlay active">
+        <h1>FALLING BLOCKS</h1>
+        <button id="start-btn">PLAY</button>
+        <div class="controls-info">
+          <p>Arrow Keys: Move/Rotate</p>
+          <p>Space: Hard Drop</p>
+          <p>C: Hold Piece</p>
+          <p>P: Pause</p>
+        </div>
+      </div>
+
+      <div id="pause-screen" class="overlay">
+        <h2>PAUSED</h2>
+        <button id="resume-btn">RESUME</button>
+      </div>
+
+      <div id="game-over-screen" class="overlay">
+        <h2>GAME OVER</h2>
+        <p>Score: <span id="final-score">0</span></p>
+        <p>Best: <span id="high-score">0</span></p>
+        <button id="restart-btn">RESTART</button>
+      </div>
+    </div>
+
+    <div id="right-panel">
+      <div class="panel-box next-panel">
+        <h2>NEXT</h2>
+        <canvas id="next-canvas" width="80" height="80"></canvas>
+      </div>
+
+      <div class="mobile-controls">
+        <button id="hard-drop-btn">DROP (⤓)</button>
+        <button id="sound-btn">SOUND: ON</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

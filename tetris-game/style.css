@@ -1,0 +1,250 @@
+:root {
+  --bg-color: #0f172a;
+  --panel-bg: rgba(30, 41, 59, 0.8);
+  --text-color: #f8fafc;
+  --border-color: #334155;
+  --accent-color: #38bdf8;
+  --glow-color: rgba(56, 189, 248, 0.5);
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  background: var(--panel-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Panels */
+#left-panel, #right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 120px;
+}
+
+.panel-box {
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.panel-box h2 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--glow-color);
+}
+
+.stats-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stat-box {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+
+.stat-box p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.stat-box h3 {
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+/* Board */
+#board-container {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  background: #000;
+  border: 4px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8) inset;
+}
+
+canvas {
+  display: block;
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  text-align: center;
+}
+
+.overlay.active {
+  display: flex;
+}
+
+.overlay h1 {
+  font-size: 28px;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--glow-color);
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.overlay h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.overlay p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+}
+
+button {
+  background: var(--bg-color);
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 10px var(--glow-color);
+  margin-top: 20px;
+}
+
+button:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 20px var(--accent-color);
+}
+
+.controls-info {
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.controls-info p {
+  margin-bottom: 5px;
+  color: #64748b;
+}
+
+.mobile-controls {
+  margin-top: auto;
+}
+
+#sound-btn, #hard-drop-btn {
+  width: 100%;
+  padding: 8px;
+  font-size: 12px;
+  margin-top: 10px;
+  border-color: var(--border-color);
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+#sound-btn:hover, #hard-drop-btn:hover {
+  background: var(--border-color);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #game-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    height: 100vh;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #board-container {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 2;
+    margin: 0 auto;
+  }
+
+  #game-canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  #left-panel, #right-panel {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .stats-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 5px;
+  }
+
+  .stat-box {
+    flex: 1;
+    min-width: 45%;
+    padding: 5px;
+  }
+
+  .panel-box {
+    width: 80px;
+    padding: 5px;
+  }
+
+  .panel-box canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .mobile-controls {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+  }
+}
